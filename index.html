@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-key="brandTitle">Ash Grill</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="video-background-container">
+    <div class="video-background-overlay"></div>
+    <video 
+      data-video-src="backgroundVideoPath" 
+      autoplay 
+      loop 
+      muted 
+      playsinline>
+      </video>
+  </div>
+
+  <div class="content-wrap">
+    <div class="container">
+      <header>
+        <div class="logo-wrap">
+    </header>
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <div class="eyebrow" data-key="heroEyebrow"></div>
+        <h1 id="hero-heading" data-key="heroTitle"></h1>
+        <p class="lead" data-key="heroLead"></p>
+
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="scrollToSection('order')" data-key="heroCtaOrder"></button>
+          <button class="btn btn-ghost" onclick="scrollToSection('branding')" data-key="heroCtaLearn"></button>
+        </div>
+
+        <div class="small-note" data-key="heroNote"></div>
+      </div>
+
+      <div class="hero-right-container" aria-label="Product Details">
+      
+        <div class="hero-card" id="hero-logo-card">
+          <div class="product-image" id="prod-image">
+            <img data-img-src="logoPath" alt="Ash Grill roasting jack preview">
+          </div>
+          <div class="prod-meta">
+            <div class="hero-product-title" data-key="productName"></div>
+            <div style="color:#bdbdbd; font-size:13px; margin-top:6px" data-key="productMeta"></div>
+          </div>
+        </div>
+
+        <div class="hero-card" id="hero-details-card">
+          <div class="price" id="priceText">
+            <span class="price-new"></span>
+            <span class="price-old"></span>
+          </div>
+          
+          <div style="margin-top:16px;">
+            <button class="btn btn-primary" onclick="scrollToSection('order')">Check Order Options</button>
+          </div>
+
+          <hr> 
+          
+          <div class="hero-specs">
+            <div class="hero-specs-title" data-key="specsTitle"></div>
+            <ul> 
+              <li data-key="spec1"></li>
+              <li data-key="spec2"></li>
+              <li data-key="spec3"></li>
+              <li data-key="spec4"></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="features container" id="branding" aria-labelledby="brand-heading">
+      <div class="text">
+        <h2 id="brand-heading" data-key="featuresTitle"></h2>
+        <p style="color:#d0d0d0; margin-top:6px; max-width:680px" data-key="featuresLead"></p>
+
+        <div style="margin-top:24px" class="cards">
+          <div class="feature">
+            <h3 data-key="feature1Title"></h3>
+            <p data-key="feature1Text"></p>
+          </div>
+          <div class="feature">
+            <h3 data-key="feature2Title"></h3>
+            <p data-key="feature2Text"></p>
+          </div>
+          <div class="feature">
+            <h3 data-key="feature3Title"></h3>
+            <p data-key="feature3Text"></p>
+          </div>
+          <div class="feature">
+            <h3 data-key="feature4Title"></h3>
+            <p data-key="feature4Text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-section container" id="gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" data-key="galleryTitle"></h2>
+      <div class="gallery-grid" id="galleryGrid">
+        </div>
+    </section>
+
+    <section class="order-section container" id="order" aria-labelledby="order-heading">
+      <div class="order-box">
+        <h2 id="order-heading" data-key="orderTitle"></h2>
+        <p style="color:#cfcfcf; margin:0 0 12px" data-key="orderLead"></p>
+
+        <div class="order-links">
+          <a href="https://ig.me/m/ashgrill.eg" target="_blank" class="btn btn-primary" data-key="orderBtnInstagram"></a>
+          <a href="https://m.me/61579254212969" target="_blank" class="btn btn-primary" data-key="orderBtnMessenger"></a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:900; color:var(--orange)" data-key="footerTitle"></div>
+          <div style="font-size:13px; color:#cfcfcf" data-key="footerSubtitle"></div>
+        </div>
+
+        <div style="display:flex; gap:18px; align-items:center">
+          <div class="socials">
+            <a href="https://ig.me/m/ashgrill.eg" class="chip" target="_blank" data-key="footerIG"></a>
+            <a href="https://www.facebook.com/profile.php?id=61579254212969" class="chip" target="_blank" data-key="footerFB"></a>
+            <a href="https://m.me/61579254212969" class="chip" target="_blank" data-key="footerMessenger"></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </div>
+  <div id="imageModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="image-modal-content">
+      <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+      <img id="imageModalImg" src="" alt="Enlarged gallery image">
+      <div id="imageModalCaption"></div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
