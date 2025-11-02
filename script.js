@@ -1,7 +1,7 @@
 /* --- Global Config --- */
 let CONFIG = {};
-let PRICE = 1500; // Default price
-let PRICE_OLD = ""; // Default old price
+let PRICE = 1900; // Default price
+let PRICE_OLD = "2200"; // Default old price
 let CURRENCY = 'LE'; // Default currency
 
 /* --- DOM Elements --- */
@@ -170,9 +170,82 @@ function scrollToSection(id) {
   el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+/**
+ * NEW: 5. Add Meta Pixel Event Handlers
+ * Tracks clicks on contact buttons.
+ */
+function addPixelEventHandlers() {
+  // Check if fbq (Facebook Pixel function) exists
+  if (typeof fbq !== 'function') {
+    console.warn('Meta Pixel (fbq) not found. Event tracking is disabled.');
+    return;
+  }
+
+  // --- Helper to generate a unique Event ID for deduplication ---
+  function generateEventID() {
+    if (crypto && crypto.randomUUID) {
+      return crypto.randomUUID();
+    } else {
+      // Fallback for older browsers
+      return 'evt_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+    }
+  }
+
+  // --- Track Order Buttons ---
+  const orderInstagram = document.querySelector('[data-key="orderBtnInstagram"]');
+  if (orderInstagram) {
+    orderInstagram.addEventListener('click', () => {
+      const eventID = generateEventID();
+      console.log(`Tracking Pixel Event 'Contact' (IG Order) with Event ID: ${eventID}`);
+      // Fire 'Contact' event with parameters and a unique eventID
+      fbq('track', 'Contact', 
+        { content_name: 'Instagram Order Button' }, 
+        { eventID: eventID }
+      );
+    });
+  }
+
+  const orderMessenger = document.querySelector('[data-key="orderBtnMessenger"]');
+  if (orderMessenger) {
+    orderMessenger.addEventListener('click', () => {
+      const eventID = generateEventID();
+      console.log(`Tracking Pixel Event 'Contact' (Messenger Order) with Event ID: ${eventID}`);
+      fbq('track', 'Contact', 
+        { content_name: 'Messenger Order Button' },
+        { eventID: eventID }
+      );
+    });
+  }
+
+  // --- Track Footer Links ---
+  const footerInstagram = document.querySelector('[data-key="footerIG"]');
+  if (footerInstagram) {
+    footerInstagram.addEventListener('click', () => {
+      const eventID = generateEventID();
+      console.log(`Tracking Pixel Event 'Contact' (IG Footer) with Event ID: ${eventID}`);
+      fbq('track', 'Contact', 
+        { content_name: 'Instagram Footer Link' },
+        { eventID: eventID }
+      );
+    });
+  }
+
+  const footerMessenger = document.querySelector('[data-key="footerMessenger"]');
+  if (footerMessenger) {
+    footerMessenger.addEventListener('click', () => {
+      const eventID = generateEventID();
+      console.log(`Tracking Pixel Event 'Contact' (Messenger Footer) with Event ID: ${eventID}`);
+      fbq('track', 'Contact', 
+        { content_name: 'Messenger Footer Link' },
+        { eventID: eventID }
+      );
+    });
+  }
+}
+
+
 /* --- Initialize Page --- */
 document.addEventListener('DOMContentLoaded', () => {
   loadConfig(); // Load text from config.json first
+  addPixelEventHandlers(); // NEW: Add listeners for pixel events
 });
-
-
